@@ -147,13 +147,14 @@ export class FileDropDirective implements OnInit {
                 // Check if our file is valid or not
                 let rejectionReason: RejectionReasons = this.fileService.isFileValid();
 
-                let fileData: File = this.fileService.getFiles()[0];
                 if (rejectionReason === RejectionReasons.None) {
+                    let fileData: File = this.fileService.getFiles()[0];
                     this.ng2FileDropFileAccepted.emit(new AcceptedFile(fileData));
                     if (this.dropZoneStyle !== null) {
                         this.dropZoneStyle.onFileAccepted();
                     }
                 } else {
+                    let fileData: File = this.fileService.getFiles()[0];
                     this.ng2FileDropFileRejected.emit(new RejectedFile(fileData, rejectionReason));
                     if (this.dropZoneStyle !== null) {
                         this.dropZoneStyle.onFileRejected();
